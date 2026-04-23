@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Qoseem Oyerinmade | DevOps Engineer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+
+    <h1>Qoseem Oyerinmade</h1>
+    <p class="subtitle">DevOps Engineer · Cloud · Automation · Kubernetes</p>
+
+    <div class="links">
+      <a href="https://github.com/your-github-username" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ABOUT -->
+    <section>
+      <h2>About Me</h2>
+      <p>
+        I design, automate, and operate production‑ready cloud‑native systems.
+        My focus is on CI/CD pipelines, container orchestration, and infrastructure as code.
+      </p>
+
+      <!-- PROFILE IMAGE -->
+      <div class="profile-image">
+        <img src="images/profile.jpg" alt="Profile picture" />
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section>
+      <h2>Projects</h2>
+
+      <!-- PROJECT 1 -->
+      <div class="project">
+        <h3>Cloud‑Native Microservices Platform</h3>
+
+        <img
+          src="images/microservices-architecture.png"
+          alt="Microservices architecture"
+          class="arch-image"
+        />
+
+        <p>
+          A production‑style microservices platform using Docker, Kubernetes,
+          CI/CD pipelines, and full observability.
+        </p>
+
+        <ul>
+          <li>Docker & Kubernetes</li>
+          <li>GitHub Actions CI/CD</li>
+          <li>Prometheus & Grafana</li>
+          <li>Terraform Infrastructure</li>
+        </ul>
+
+        <a href="https://github.com/your-github-username/devops-microservices-platform" target="_blank">
+          View on GitHub →
+        </a>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project">
+        <h3>Kubernetes CI/CD Pipeline</h3>
+
+        <img
+          src="images/cicd-architecture.png"
+          alt="CI/CD pipeline architecture"
+          class="arch-image"
+        />
+
+        <p>
+          End‑to‑end CI/CD pipeline that builds, tests, containerizes,
+          and deploys applications to Kubernetes with rolling updates.
+        </p>
+
+        <ul>
+          <li>GitHub Actions</li>
+          <li>Docker Registry</li>
+          <li>Kubernetes Deployments</li>
+        </ul>
+
+        <a href="https://github.com/your-github-username/k8s-cicd-pipeline" target="_blank">
+          View on GitHub →
+        </a>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project">
+        <h3>Infrastructure as Code (Terraform)</h3>
+
+        <img
+          src="images/terraform-architecture.png"
+          alt="Terraform architecture"
+          class="arch-image"
+        />
+
+        <p>
+          Modular Terraform setup for provisioning secure,
+          scalable cloud infrastructure including networking,
+          compute, IAM, and Kubernetes clusters.
+        </p>
+
+        <ul>
+          <li>Terraform Modules</li>
+          <li>Cloud Networking</li>
+          <li>IAM & Security</li>
+        </ul>
+
+        <a href="https://github.com/your-github-username/terraform-cloud-infra" target="_blank">
+          View on GitHub →
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Qoseem Oyerinmade · Built with simplicity & automation</p>
+  </footer>
+
+  <!-- THEME SCRIPT -->
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    const setTheme = (theme) => {
+      document.documentElement.setAttribute("data-theme", theme);
+      toggle.textContent = theme === "dark" ? "🌙" : "☀️";
+      localStorage.setItem("theme", theme);
+    };
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      setTheme(prefersDark ? "dark" : "light");
+    }
+
+    toggle.addEventListener("click", () => {
+      const current =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "light"
+          : "dark";
+      setTheme(current);
+    });
+  </script>
+
+</body>
+</html>
