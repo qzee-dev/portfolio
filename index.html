@@ -118,7 +118,7 @@
 
       <!-- PROJECT 3 -->
       <div class="project">
-        <h3>Infrastructure as Code (Terraform)</h3>
+        <h3>Infrastructure Automation: Terraform + Packer + Ansible for AWS)</h3>
 
         <img
           src="images/terraform-architecture.png"
@@ -127,19 +127,30 @@
         />
 
         <p>
-          Modular Terraform setup for provisioning secure,
-          scalable cloud infrastructure including networking,
-          compute, IAM, and Kubernetes clusters.
+           Complete infrastructure-as-code platform that automates provisioning and deployment
+          of a secure, scalable 3-tier AWS environment. Terraform defines the cloud foundation
+          (VPC, ALB, ASG, RDS, IAM), Packer builds immutable custom AMIs, and Ansible configures
+          the application runtime (Docker, Docker Compose, systemd services, CloudWatch monitoring).
+          Includes Checkov security scanning, Gitleaks secret detection, and safe AMI rollout
+           strategies ensuring zero-downtime deployments with health-based instance cutover.
         </p>
 
         <ul>
-          <li>Terraform Modules</li>
-          <li>Cloud Networking</li>
-          <li>IAM & Security</li>
-        </ul>
-
-        <a href="https://github.com/your-github-username/terraform-cloud-infra" target="_blank">
-          View on GitHub →
+           <li>Terraform modular setup (networking, compute, storage, IAM, monitoring)</li>
+           <li>Packer AMI building with Ansible provisioning</li>
+           <li>Docker/Docker Compose v2 baked into images</li>
+           <li>Systemd service management & CloudWatch integration</li>
+           <li>Security scanning (Checkov) & secrets detection (Gitleaks)</li>
+          <li>Auto Scaling & Application Load Balancing</li>
+          <li>Health-based safe rollout strategy</li>
+         <li>RDS PostgreSQL/MySQL with IAM role access</li>
+    </ul>
+        <a href="https://github.com/qzee-dev/terraform-3tier-architecture" target="_blank">
+          View on GitHub →[terraform-three-tier]
+        </a>
+        <br>
+        <a href="https://github.com/qzee-dev/infra_packer" target="_blank">
+          View on GitHub→[infra_packer}
         </a>
       </div>
 
