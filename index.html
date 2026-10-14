@@ -1,138 +1,98 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
     content="Qoseem Oyerinmade | DevSecOps Engineer specializing in AWS, Kubernetes, Terraform, GitOps, Infrastructure Automation, and Cloud Security."
   >
-
   <meta
     name="keywords"
     content="AWS, Kubernetes, Terraform, GitOps, DevSecOps, Cloud Engineer, Infrastructure Automation"
   >
+  <meta name="author" content="Qoseem Oyerinmade">
+  <meta name="theme-color" content="#0b1120">
 
-  <meta
-    name="author"
-    content="Qoseem Oyerinmade"
-  >
+  <title>Qoseem Oyerinmade | DevSecOps Engineer</title>
 
-  <title>
-    Qoseem Oyerinmade | DevSecOps Engineer
-  </title>
+  <link rel="stylesheet" href="styles.css">
 
-  <link
-    rel="stylesheet"
-    href="styles.css"
-  >
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-
-  <!-- =====================================
-       HEADER / HERO
-  ====================================== -->
-
-  <header class="header">
-
-    <button
-      id="theme-toggle"
-      aria-label="Toggle theme"
-    >
-      🌙
-    </button>
-
-    <nav class="navbar">
-
-      <div class="logo">
+  <!-- HEADER -->
+  <header class="header" id="home">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Qoseem Oyerinmade home">
         QO
-      </div>
+      </a>
 
       <button
         class="hamburger"
         id="hamburger"
-        aria-label="Open Navigation"
+        type="button"
+        aria-label="Open navigation"
+        aria-controls="nav-links"
+        aria-expanded="false"
       >
-        ☰
+        <span aria-hidden="true">☰</span>
       </button>
 
-      <div
-        class="nav-links"
-        id="nav-links"
-      >
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#projects">
-          Projects
-        </a>
-
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
         <a
           href="https://github.com/qzee-dev"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-
+        >GitHub</a>
         <a
           href="https://www.linkedin.com/in/qoseemoluwafemi"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-
+        >LinkedIn</a>
       </div>
-
     </nav>
 
-    <div class="hero-content">
+    <button
+      id="theme-toggle"
+      type="button"
+      aria-label="Switch to light theme"
+      aria-pressed="false"
+    >☀️</button>
 
+    <div class="hero-content">
       <div class="hero-badge">
         AWS • Kubernetes • Terraform • DevSecOps
       </div>
 
-      <h1>
-        Qoseem Oyerinmade
-      </h1>
+      <h1>Qoseem Oyerinmade</h1>
 
       <p class="subtitle">
         DevSecOps Engineer · Cloud Infrastructure · Automation · Kubernetes
       </p>
 
       <div class="hero-buttons">
-
         <a
           class="primary-btn"
           href="https://github.com/qzee-dev"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+        >GitHub</a>
 
         <a
           class="secondary-btn"
           href="https://www.linkedin.com/in/qoseemoluwafemi"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-
+        >LinkedIn</a>
       </div>
 
       <div class="stats">
-
         <div class="stat-card">
           <h3>AWS</h3>
           <span>Landing Zones</span>
@@ -150,107 +110,66 @@
 
         <div class="stat-card">
           <h3>IaC</h3>
-          <span>Terraform & Packer</span>
+          <span>Terraform &amp; Packer</span>
         </div>
-
       </div>
-
     </div>
-
   </header>
 
-  <!-- =====================================
-       MAIN
-  ====================================== -->
-
+  <!-- MAIN CONTENT -->
   <main class="container">
-
-    <!-- =====================================
-         ABOUT
-    ====================================== -->
-
+    <!-- ABOUT -->
     <section id="about">
-
-      <h2>
-        About Me
-      </h2>
+      <h2>About Me</h2>
 
       <div class="about-grid">
-
         <div class="about-content">
-
           <p>
-            I am a Cloud Infrastructure and DevSecOps Engineer with expertise in
-            AWS, Kubernetes, Docker, Terraform, GitHub Actions, Linux,
+            I am a Cloud Infrastructure and DevSecOps Engineer with expertise
+            in AWS, Kubernetes, Docker, Terraform, GitHub Actions, Linux,
             and Windows Server administration.
           </p>
-
-          <br>
 
           <p>
             Experienced in designing, automating, securing, and maintaining
             scalable cloud environments using Infrastructure as Code (IaC),
-            CI/CD pipelines, cloud security best practices,
-            GitOps methodologies, and infrastructure governance.
+            CI/CD pipelines, cloud security best practices, GitOps
+            methodologies, and infrastructure governance.
           </p>
-
-          <br>
 
           <p>
-            My focus is building resilient cloud platforms,
-            secure deployment pipelines,
-            automated infrastructure provisioning,
-            Kubernetes platforms,
-            cloud networking,
-            observability,
-            and operational excellence.
+            My focus is building resilient cloud platforms, secure deployment
+            pipelines, automated infrastructure provisioning, Kubernetes
+            platforms, cloud networking, observability, and operational
+            excellence.
           </p>
-
         </div>
 
         <div class="profile-image">
-
           <img
             src="images/kubernetes.png"
             alt="Kubernetes profile illustration"
             loading="lazy"
             decoding="async"
           >
-
         </div>
-
       </div>
-
     </section>
 
-    <!-- =====================================
-         PROJECTS
-    ====================================== -->
-
+    <!-- PROJECTS -->
     <section id="projects">
+      <h2>Featured Projects</h2>
 
-      <h2>
-        Featured Projects
-      </h2>
-
-      <!-- ===============================
-           PROJECT 1
-      ================================ -->
-
+      <!-- PROJECT 1 -->
       <article class="project">
-
-        <h3>
-          Production EKS / GitOps Platform
-        </h3>
+        <h3>Production EKS / GitOps Platform</h3>
 
         <div class="tech-stack">
-
           <span>AWS EKS</span>
           <span>Terraform</span>
           <span>ArgoCD</span>
           <span>Helm</span>
           <span>GitOps</span>
-
         </div>
 
         <img
@@ -269,87 +188,53 @@
         </p>
 
         <ul>
-
-          <li>
-            GitHub Actions CI/CD Automation
-          </li>
-
-          <li>
-            GitHub OIDC Authentication
-          </li>
-
-          <li>
-            Checkov Policy-as-Code Governance
-          </li>
-
-          <li>
-            Terraform Remote State Bootstrapping
-          </li>
-
-          <li>
-            AWS KMS State Encryption
-          </li>
-
-          <li>
-            Production-Safe EKS Upgrade Strategy
-          </li>
-
+          <li>GitHub Actions CI/CD Automation</li>
+          <li>GitHub OIDC Authentication</li>
+          <li>Checkov Policy-as-Code Governance</li>
+          <li>Terraform Remote State Bootstrapping</li>
+          <li>AWS KMS State Encryption</li>
+          <li>Production-Safe EKS Upgrade Strategy</li>
         </ul>
 
         <div class="project-links">
-
           <a
             href="https://github.com/qzee-dev/eks-production-platform"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            EKS Repository
-          </a>
+          >EKS Repository</a>
 
           <a
             href="https://github.com/qzee-dev/gitops-repo/tree/main/Ecr-Repo"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            ECR & ArgoCD
-          </a>
+          >ECR &amp; ArgoCD</a>
 
           <a
             href="https://github.com/qzee-dev/fintech-enterprise-gitops-manifest/tree/main"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            GitOps Manifest
-          </a>
-
+          >GitOps Manifest</a>
         </div>
-
       </article>
 
-      <!-- ===============================
-           PROJECT 2
-      ================================ -->
-
+      <!-- PROJECT 2 -->
       <article class="project">
-
         <h3>
           End-to-End CI/CD Platform for Fintech:
           Automated Testing, Security, and Release Delivery
         </h3>
 
         <div class="tech-stack">
-
           <span>GitHub Actions</span>
           <span>Nx</span>
           <span>Docker</span>
           <span>Trivy</span>
           <span>Gitleaks</span>
-
         </div>
 
         <img
           src="./images/DevSecOps-cicd.png"
-          alt="DevSecOps CI CD Architecture"
+          alt="DevSecOps CI/CD Architecture"
           class="arch-image"
           loading="lazy"
           decoding="async"
@@ -357,55 +242,44 @@
 
         <p>
           End-to-end DevOps pipeline for a fintech microservices platform,
-          built to automate testing, security scanning,
-          containerization, and release delivery across
-          a multi-service monorepo.
+          built to automate testing, security scanning, containerization,
+          and release delivery across a multi-service monorepo.
         </p>
 
         <ul>
-
-          <li>
-            Monorepo CI/CD with Nx & GitHub Actions
-          </li>
-
-          <li>
-            Dockerized Service Builds and ECR Publishing
-          </li>
-
-          <li>
-            Security Scanning with Trivy and Gitleaks
-          </li>
-
-          <li>
-            Immutable Release Tagging and Digest Verification
-          </li>
-
-          <li>
-            CODEOWNERS Governance Model
-          </li>
-
-          <li>
-            Slack Security and Release Notifications
-          </li>
-
-          <li>
-            Automated Dependency Governance
-          </li>
-
+          <li>Monorepo CI/CD with Nx &amp; GitHub Actions</li>
+          <li>Dockerized Service Builds and ECR Publishing</li>
+          <li>Security Scanning with Trivy and Gitleaks</li>
+          <li>Immutable Release Tagging and Digest Verification</li>
+          <li>CODEOWNERS Governance Model</li>
+          <li>Slack Security and Release Notifications</li>
+          <li>Automated Dependency Governance</li>
         </ul>
 
         <div class="project-links">
-
           <a
             href="https://github.com/Coreinfra-Labs/fintech-platform"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            View Repository
-          </a>
-
+          >View Repository</a>
         </div>
-
       </article>
+    </section>
+  </main>
 
-      <!-- ==========
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      &copy; <span id="current-year"></span> Qoseem Oyerinmade
+    </p>
+    <p>
+      Cloud Infrastructure · DevSecOps · Automation · Security
+    </p>
+    <a
+      href="https://github.com/qzee-dev"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Explore my GitHub</a>
+  </footer>
+</body>
+</html>
