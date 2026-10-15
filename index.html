@@ -321,63 +321,75 @@
 
         <article class="project-card">
           <div class="project-card-top">
-            <span class="project-number">03 / CLOUD NETWORKING</span>
-            <span class="project-glyph">⌘</span>
+            <span class="project-number">03 / INFRASTRUCTURE AUTOMATION</span>
+            <span class="project-glyph">⬡</span>
           </div>
-          <h3>AWS Multi-VPC Network &amp; Centralized Inspection</h3>
+          <h3>Infrastructure Automation with Terraform, Packer &amp; Ansible</h3>
           <div class="tech-stack">
-            <span>AWS Transit Gateway</span><span>Network Firewall</span>
-            <span>Terraform</span><span>Hybrid VPN</span><span>Routing</span>
+            <span>AWS</span><span>Terraform</span><span>Packer</span>
+            <span>Ansible</span><span>Docker</span><span>CloudWatch</span>
           </div>
-
-          <div class="network-visual" role="img"
-            aria-label="Conceptual AWS network architecture showing workload VPCs connected through Transit Gateway and an Inspection VPC with AWS Network Firewall">
-            <div class="network-row">
-              <span class="network-node workload-node">Production<br>VPC</span>
-              <span class="network-node workload-node">Staging<br>VPC</span>
-              <span class="network-node workload-node">Development<br>VPC</span>
-            </div>
-            <div class="network-connectors"><span></span><span></span><span></span></div>
-            <div class="network-hub">
-              <span class="hub-icon">⌘</span>
-              <span><strong>Transit Gateway</strong><small>Central routing</small></span>
-            </div>
-            <div class="network-line"></div>
-            <div class="inspection-node">
-              <span class="firewall-icon">⬡</span>
-              <span><strong>Inspection VPC</strong><small>AWS Network Firewall</small></span>
-              <span class="inspection-badge">INSPECT</span>
-            </div>
-            <div class="network-footer">
-              <span>Hybrid VPN</span><span>→</span>
-              <span>Inspected traffic paths</span><span>→</span>
-              <span>Controlled egress</span>
-            </div>
-          </div>
-
+          <img src="images/packer.png"
+            alt="Terraform, Packer and Ansible infrastructure automation architecture"
+            class="arch-image" loading="lazy" decoding="async">
           <p>
-            A modular Terraform networking design focused on connecting
-            workload VPCs through AWS Transit Gateway and routing selected
-            traffic through a dedicated Inspection VPC for centralized
-            security controls.
+            An infrastructure-as-code platform that automates provisioning
+            and deployment of a secure, scalable three-tier AWS environment.
+            Terraform defines the cloud foundation, Packer builds immutable
+            AMIs, and Ansible configures the application runtime and monitoring.
           </p>
           <ul class="project-highlights">
-            <li>Centralized inspection and route-table design</li>
-            <li>Workload and hybrid connectivity separation</li>
-            <li>Explicit routing for inspected traffic paths</li>
-            <li>Modular infrastructure-as-code structure</li>
+            <li>Modular Terraform for networking, compute, storage, IAM and monitoring</li>
+            <li>Packer AMI builds with Ansible provisioning</li>
+            <li>Docker, Docker Compose and systemd service configuration</li>
+            <li>Checkov security scanning and Gitleaks secret detection</li>
+            <li>Auto Scaling, Application Load Balancing and health-based rollouts</li>
           </ul>
           <div class="project-links">
-            <a class="project-link" href="https://github.com/qzee-dev"
+            <a class="project-link"
+              href="https://github.com/qzee-dev/terraform-3tier-architecture"
               target="_blank" rel="noopener noreferrer">
-              Explore GitHub <span>↗</span>
+              Terraform 3-Tier Repo <span>↗</span>
             </a>
-            <span class="project-note">
-              Replace with the specific repository URL when published.
-            </span>
+            <a class="text-link"
+              href="https://github.com/qzee-dev/infra_packer"
+              target="_blank" rel="noopener noreferrer">
+              Packer Infrastructure ↗
+            </a>
           </div>
         </article>
       </div>
+
+      <!--
+        FUTURE PROJECT TEMPLATE
+        To add another project, duplicate one <article class="project-card"> above,
+        update its title, technologies, image, summary, highlights and repository URLs,
+        then change its project number/category. The grid will lay out additional cards.
+
+        <article class="project-card">
+          <div class="project-card-top">
+            <span class="project-number">04 / PROJECT CATEGORY</span>
+            <span class="project-glyph">◇</span>
+          </div>
+          <h3>New Project Title</h3>
+          <div class="tech-stack">
+            <span>Technology One</span><span>Technology Two</span>
+          </div>
+          <img src="images/new-project.png" alt="New project architecture"
+            class="arch-image" loading="lazy" decoding="async">
+          <p>Briefly describe the project, what it does, and the value it provides.</p>
+          <ul class="project-highlights">
+            <li>Key capability or implementation detail</li>
+            <li>Security, automation, or reliability feature</li>
+          </ul>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/YOUR-ORG/YOUR-REPO"
+              target="_blank" rel="noopener noreferrer">
+              View on GitHub <span>↗</span>
+            </a>
+          </div>
+        </article>
+      -->
     </section>
 
     <section class="contact-panel container-wide" id="contact">
