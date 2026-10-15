@@ -3,7 +3,6 @@
 // QOSEEM OYERINMADE — PORTFOLIO INTERACTIONS
 // Theme, responsive navigation, active section, footer year
 // =====================================================
-
 (() => {
   "use strict";
 
@@ -138,7 +137,7 @@
   }
 
   // Highlight the navigation item for the visible section.
-  const observedSections = ["home", "about", "projects", "skills", "contact"]
+  const observedSections = ["home", "impact", "about", "projects", "skills", "contact"]
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
