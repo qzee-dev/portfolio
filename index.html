@@ -13,9 +13,54 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="./styles.css?v=2">
- <script src="./script.js?v=2" defer></script>
+
+  <link rel="stylesheet" href="./styles.css?v=3">
+
+  <!-- Fallback layout if styles.css fails to load -->
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Arial,sans-serif;background:#050b18;color:#f4f6ff;line-height:1.65}
+    img{display:block;max-width:100%;height:auto}
+    svg{display:block;width:19px;height:19px;max-width:100%;flex-shrink:0}
+    a{color:inherit;text-decoration:none}
+    .container-wide{width:min(1440px,calc(100% - 40px));margin-inline:auto}
+    .site-header{position:sticky;top:0;z-index:1000;background:#081226;border-bottom:1px solid #263653}
+    .navbar{min-height:70px;display:flex;align-items:center;gap:24px}
+    .brand,.nav-links,.nav-actions{display:flex;align-items:center;gap:16px}
+    .nav-links{margin-inline:auto}.nav-link{color:#c0cbe2}.nav-actions{gap:12px}
+    .hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;padding-top:28px}
+    .hero h1{font-size:clamp(42px,5vw,76px);line-height:1.02;margin:12px 0}
+    .hero-visual{position:relative;min-height:300px}
+    .stats-grid,.impact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .stat-card,.impact-card,.project-card,.about-panel,.contact-panel{padding:18px;border:1px solid #263653;border-radius:14px;background:#0c1830}
+    .stats-grid{grid-column:1/-1;margin:22px 0}
+    .about-panel{display:grid;grid-template-columns:1fr 2fr 2fr 1fr;gap:20px}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .project-card{min-width:0}
+    .project-links{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+    .repo-url{overflow-wrap:anywhere}
+    .contact-panel{display:flex;justify-content:space-between;gap:24px}
+    .site-footer{padding:24px 0}
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .about-panel{grid-template-columns:1fr 2fr}
+      .projects-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .stats-grid,.impact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .nav-links{gap:10px}
+    }
+    @media(max-width:600px){
+      .container-wide{width:calc(100% - 28px)}
+      .navbar{flex-wrap:wrap;padding:10px 0}
+      .nav-links{order:3;width:100%;justify-content:space-between;flex-wrap:wrap}
+      .hero{display:flex;flex-direction:column;align-items:stretch}
+      .about-panel,.projects-grid,.stats-grid,.impact-grid{grid-template-columns:1fr}
+      .contact-panel{display:block}
+      .contact-actions{display:flex;flex-wrap:wrap;margin-top:16px}
+    }
+  </style>
+
+  <script src="./script.js?v=3" defer></script>
 </head>
 <body>
   <header class="site-header" id="home">
@@ -48,7 +93,7 @@
 
         <a class="social-icon" href="https://github.com/qzee-dev"
           target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
             <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.54v-2.1c-3.1.68-3.75-1.32-3.75-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.62 1.23 3.26.94.1-.73.39-1.23.71-1.51-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.16-3-.12-.29-.5-1.42.11-2.96 0 0 .95-.3 3.05 1.15a10.6 10.6 0 0 1 5.56 0c2.1-1.45 3.05-1.15 3.05-1.15.61 1.54.23 2.67.11 2.96.72.78 1.16 1.78 1.16 3 0 4.29-2.62 5.24-5.11 5.51.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/>
           </svg>
         </a>
@@ -294,9 +339,7 @@
           <p class="section-kicker">SELECTED WORK</p>
           <h2 id="projects-title">Featured Projects</h2>
         </div>
-        <p class="section-intro">
-          Real-world projects. Practical solutions. Measurable impact.
-        </p>
+        <p class="section-intro">Real-world projects. Practical solutions. Measurable impact.</p>
       </div>
 
       <div class="projects-grid">
@@ -326,18 +369,10 @@
             <li><strong class="outcome-highlight">4× reduction in EKS support costs</strong> (reported project outcome)</li>
           </ul>
           <div class="project-links">
-            <a class="project-link"
-              href="https://github.com/qzee-dev/eks-production-platform"
-              target="_blank" rel="noopener noreferrer">
-              View on GitHub <span>↗</span>
-            </a>
+            <a class="project-link" href="https://github.com/qzee-dev/eks-production-platform" target="_blank" rel="noopener noreferrer">View on GitHub <span>↗</span></a>
             <a class="repo-url" href="https://github.com/qzee-dev/eks-production-platform" target="_blank" rel="noopener noreferrer">https://github.com/qzee-dev/eks-production-platform</a>
-            <a class="text-link"
-              href="https://github.com/qzee-dev/gitops-repo/tree/main/Ecr-Repo"
-              target="_blank" rel="noopener noreferrer">ECR &amp; ArgoCD ↗</a>
-            <a class="text-link"
-              href="https://github.com/qzee-dev/fintech-enterprise-gitops-manifest/tree/main"
-              target="_blank" rel="noopener noreferrer">GitOps Manifest ↗</a>
+            <a class="text-link" href="https://github.com/qzee-dev/gitops-repo/tree/main/Ecr-Repo" target="_blank" rel="noopener noreferrer">ECR &amp; ArgoCD ↗</a>
+            <a class="text-link" href="https://github.com/qzee-dev/fintech-enterprise-gitops-manifest/tree/main" target="_blank" rel="noopener noreferrer">GitOps Manifest ↗</a>
             <a class="repo-url" href="https://github.com/qzee-dev/gitops-repo/tree/main/Ecr-Repo" target="_blank" rel="noopener noreferrer">https://github.com/qzee-dev/gitops-repo/tree/main/Ecr-Repo</a>
             <a class="repo-url" href="https://github.com/qzee-dev/fintech-enterprise-gitops-manifest/tree/main" target="_blank" rel="noopener noreferrer">https://github.com/qzee-dev/fintech-enterprise-gitops-manifest/tree/main</a>
           </div>
@@ -369,11 +404,7 @@
             <li>CODEOWNERS and dependency governance</li>
           </ul>
           <div class="project-links">
-            <a class="project-link"
-              href="https://github.com/Coreinfra-Labs/fintech-platform"
-              target="_blank" rel="noopener noreferrer">
-              View on GitHub <span>↗</span>
-            </a>
+            <a class="project-link" href="https://github.com/Coreinfra-Labs/fintech-platform" target="_blank" rel="noopener noreferrer">View on GitHub <span>↗</span></a>
             <a class="repo-url" href="https://github.com/Coreinfra-Labs/fintech-platform" target="_blank" rel="noopener noreferrer">https://github.com/Coreinfra-Labs/fintech-platform</a>
           </div>
         </article>
@@ -388,6 +419,7 @@
             <span>AWS</span><span>Terraform</span><span>Packer</span>
             <span>Ansible</span><span>Docker</span><span>CloudWatch</span>
           </div>
+
           <div class="network-visual" role="img" aria-label="Illustrative three-tier AWS architecture: users connect through an application load balancer to auto-scaled application instances, with Terraform provisioning, Packer image builds, and Ansible configuration">
             <div class="network-row">
               <div class="network-node">Users / Internet</div>
@@ -395,11 +427,19 @@
               <div class="network-node">Auto Scaling</div>
             </div>
             <div class="network-connectors"><span></span><span></span><span></span></div>
-            <div class="network-hub"><span class="hub-icon">⬡</span><div><strong>AWS Three-Tier Platform</strong><small>Network · Compute · Application</small></div></div>
+            <div class="network-hub">
+              <span class="hub-icon">⬡</span>
+              <div><strong>AWS Three-Tier Platform</strong><small>Network · Compute · Application</small></div>
+            </div>
             <div class="network-line"></div>
-            <div class="inspection-node"><span class="firewall-icon">⚙</span><div><strong>Infrastructure Automation</strong><small>Terraform · Packer · Ansible</small></div><span class="inspection-badge">IaC</span></div>
+            <div class="inspection-node">
+              <span class="firewall-icon">⚙</span>
+              <div><strong>Infrastructure Automation</strong><small>Terraform · Packer · Ansible</small></div>
+              <span class="inspection-badge">IaC</span>
+            </div>
             <div class="network-footer"><span>Provision</span><span>•</span><span>Build immutable AMIs</span><span>•</span><span>Configure &amp; monitor</span></div>
           </div>
+
           <p>
             An infrastructure-as-code platform for repeatable provisioning
             and deployment of a secure, scalable three-tier AWS environment.
@@ -414,76 +454,25 @@
             <li>Auto Scaling, Application Load Balancing and health-based rollouts</li>
           </ul>
           <div class="project-links">
-            <a class="project-link"
-              href="https://github.com/qzee-dev/terraform-3tier-architecture"
-              target="_blank" rel="noopener noreferrer">
-              Terraform 3-Tier Repo <span>↗</span>
-            </a>
-            <a class="text-link"
-              href="https://github.com/qzee-dev/infra_packer"
-              target="_blank" rel="noopener noreferrer">
-              Packer Infrastructure ↗
-            </a>
+            <a class="project-link" href="https://github.com/qzee-dev/terraform-3tier-architecture" target="_blank" rel="noopener noreferrer">Terraform 3-Tier Repo <span>↗</span></a>
+            <a class="text-link" href="https://github.com/qzee-dev/infra_packer" target="_blank" rel="noopener noreferrer">Packer Infrastructure ↗</a>
             <a class="repo-url" href="https://github.com/qzee-dev/terraform-3tier-architecture" target="_blank" rel="noopener noreferrer">https://github.com/qzee-dev/terraform-3tier-architecture</a>
             <a class="repo-url" href="https://github.com/qzee-dev/infra_packer" target="_blank" rel="noopener noreferrer">https://github.com/qzee-dev/infra_packer</a>
           </div>
         </article>
       </div>
-
-      <!--
-        FUTURE PROJECT TEMPLATE
-        To add another project, duplicate one <article class="project-card"> above,
-        update its title, technologies, image, summary, highlights and repository URLs,
-        then change its project number/category. The grid will lay out additional cards.
-
-        <article class="project-card">
-          <div class="project-card-top">
-            <span class="project-number">04 / PROJECT CATEGORY</span>
-            <span class="project-glyph">◇</span>
-          </div>
-          <h3>New Project Title</h3>
-          <div class="tech-stack">
-            <span>Technology One</span><span>Technology Two</span>
-          </div>
-          <img src="images/new-project.png" alt="New project architecture"
-            class="arch-image" loading="lazy" decoding="async">
-          <p>Briefly describe the project, what it does, and the value it provides.</p>
-          <ul class="project-highlights">
-            <li>Key capability or implementation detail</li>
-            <li>Security, automation, or reliability feature</li>
-          </ul>
-          <div class="project-links">
-            <a class="project-link" href="https://github.com/YOUR-ORG/YOUR-REPO"
-              target="_blank" rel="noopener noreferrer">
-              View on GitHub <span>↗</span>
-            </a>
-          </div>
-        </article>
-      -->
     </section>
 
     <section class="contact-panel container-wide" id="contact">
       <div>
         <p class="section-kicker">HAVE A PROJECT IN MIND?</p>
         <h2>Let's build something secure and scalable.</h2>
-        <p>
-          Interested in cloud infrastructure, platform engineering,
-          automation, or DevSecOps collaboration?
-        </p>
+        <p>Interested in cloud infrastructure, platform engineering, automation, or DevSecOps collaboration?</p>
       </div>
       <div class="contact-actions">
-        <a class="button button-primary"
-          href="https://www.linkedin.com/in/qoseemoluwafemi"
-          target="_blank" rel="noopener noreferrer">
-          Connect on LinkedIn <span>↗</span>
-        </a>
-        <a class="button button-outline" href="https://github.com/qzee-dev"
-          target="_blank" rel="noopener noreferrer">
-          Explore GitHub <span>↗</span>
-        </a>
-        <a class="button button-cv" href="assets/Qoseem-Oyerinmade-CV.pdf" download>
-          Download CV <span aria-hidden="true">↓</span>
-        </a>
+        <a class="button button-primary" href="https://www.linkedin.com/in/qoseemoluwafemi" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span>↗</span></a>
+        <a class="button button-outline" href="https://github.com/qzee-dev" target="_blank" rel="noopener noreferrer">Explore GitHub <span>↗</span></a>
+        <a class="button button-cv" href="assets/Qoseem-Oyerinmade-CV.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
       </div>
     </section>
   </main>
@@ -504,12 +493,9 @@
       </p>
 
       <div class="footer-socials">
-        <a href="https://github.com/qzee-dev" target="_blank"
-          rel="noopener noreferrer" aria-label="GitHub">GH</a>
-        <a href="https://www.linkedin.com/in/qoseemoluwafemi"
-          target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-        <a href="https://www.linkedin.com/in/qoseemoluwafemi"
-          target="_blank" rel="noopener noreferrer" aria-label="Contact via LinkedIn">✉</a>
+        <a href="https://github.com/qzee-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/qoseemoluwafemi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+        <a href="https://www.linkedin.com/in/qoseemoluwafemi" target="_blank" rel="noopener noreferrer" aria-label="Contact via LinkedIn">✉</a>
       </div>
 
       <p class="copyright">
