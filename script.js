@@ -1,168 +1,289 @@
 
-// =====================================================
-// QOSEEM OYERINMADE — PORTFOLIO INTERACTIONS
-// Theme, responsive navigation, active section, footer year
-// =====================================================
-(() => {
-  "use strict";
+// ========================================================
+// QOSEEM OYERINMADE — PORTFOLIO JAVASCRIPT
+// Theme toggle, mobile navigation, active links and year
+// ========================================================
 
-  const root = document.documentElement;
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ------------------------------------------------------
+  // THEME TOGGLE
+  // ------------------------------------------------------
+
   const themeToggle = document.getElementById("theme-toggle");
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("nav-links");
-  const currentYear = document.getElementById("current-year");
-  const navItems = [...document.querySelectorAll(".nav-link")];
+  const root = document.documentElement;
 
-  // Apply the selected colour theme.
-  function setTheme(theme, save = true) {
-    const resolvedTheme = theme === "light" ? "light" : "dark";
+  function applyTheme(theme) {
+    const selectedTheme = theme === "light" ? "light" : "dark";
 
-    root.setAttribute("data-theme", resolvedTheme);
+    root.setAttribute("data-theme", selectedTheme);
 
     if (themeToggle) {
-      const isDark = resolvedTheme === "dark";
+      const isLight = selectedTheme === "light";
 
+      themeToggle.setAttribute("aria-pressed", String(isLight));
       themeToggle.setAttribute(
         "aria-label",
-        isDark ? "Switch to light theme" : "Switch to dark theme"
+        isLight ? "Switch to dark theme" : "Switch to light theme"
       );
-
-      themeToggle.setAttribute("aria-pressed", String(!isDark));
+      themeToggle.setAttribute(
+        "title",
+        isLight ? "Switch to dark theme" : "Switch to light theme"
+      );
     }
 
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    // Keep the browser interface consistent with the selected theme.
+    const themeColor = document.querySelector('meta[name="theme-color"]');
 
-    if (themeMeta) {
-      themeMeta.setAttribute(
+    if (themeColor) {
+      themeColor.setAttribute(
         "content",
-        resolvedTheme === "dark" ? "#070d1b" : "#f4f6ff"
+        selectedTheme === "light" ? "#f4f6ff" : "#070d1b"
       );
-    }
-
-    if (save) {
-      try {
-        localStorage.setItem("theme", resolvedTheme);
-      } catch (_) {
-        // Storage can be unavailable.
-      }
     }
   }
 
-  // Restore the saved theme or use the browser preference.
-  let savedTheme = null;
+  let savedTheme = "dark";
 
   try {
-    savedTheme = localStorage.getItem("theme");
-  } catch (_) {
-    // Use the system preference.
+    const storedTheme = localStorage.getItem("qoseem-portfolio-theme");
+
+    if (storedTheme === "light" || storedTheme === "dark") {
+      savedTheme = storedTheme;
+    }
+  } catch (error) {
+    // The site still works if browser storage is unavailable.
   }
 
-  const systemPrefersDark =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(savedTheme);
 
-  setTheme(
-    savedTheme === "dark" || savedTheme === "light"
-      ? savedTheme
-      : systemPrefersDark
-        ? "dark"
-        : "light",
-    false
-  );
-
-  // Toggle between dark and light themes.
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-      const currentTheme = root.getAttribute("data-theme");
-      setTheme(currentTheme === "dark" ? "light" : "dark");
+      const currentTheme = root.getAttribute("data-theme") || "dark";
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+      applyTheme(nextTheme);
+
+      try {
+        localStorage.setItem("qoseem-portfolio-theme", nextTheme);
+      } catch (error) {
+        // Theme switching continues to work for the current page.
+      }
     });
   }
 
-  // Close the mobile navigation menu.
+  // ------------------------------------------------------
+  // MOBILE NAVIGATION
+  // ------------------------------------------------------
+
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+
   function closeNavigation() {
     if (!hamburger || !navLinks) return;
 
     navLinks.classList.remove("active");
+    hamburger.classList.remove("active");
     hamburger.setAttribute("aria-expanded", "false");
     hamburger.setAttribute("aria-label", "Open navigation");
-    hamburger.classList.remove("is-open");
   }
 
-  // Mobile navigation controls.
+  function openNavigation() {
+    if (!hamburger || !navLinks) return;
+
+    navLinks.classList.add("active");
+    hamburger.classList.add("active");
+    hamburger.setAttribute("aria-expanded", "true");
+    hamburger.setAttribute("aria-label", "Close navigation");
+  }
+
   if (hamburger && navLinks) {
     hamburger.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("active");
+      const isExpanded =
+        hamburger.getAttribute("aria-expanded") === "true";
 
-      hamburger.setAttribute("aria-expanded", String(isOpen));
-      hamburger.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
-      );
-      hamburger.classList.toggle("is-open", isOpen);
-    });
-
-    // Close the menu after selecting a navigation link.
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", closeNavigation);
-    });
-
-    // Close the menu when Escape is pressed.
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && navLinks.classList.contains("active")) {
+      if (isExpanded) {
         closeNavigation();
-        hamburger.focus();
+      } else {
+        openNavigation();
       }
     });
 
-    // Close the menu when clicking outside it.
-    document.addEventListener("click", event => {
+    // Close the mobile menu after selecting a navigation link.
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeNavigation);
+    });
+
+    // Close the menu when the user clicks outside it.
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+
       if (
-        navLinks.classList.contains("active") &&
-        !navLinks.contains(event.target) &&
-        !hamburger.contains(event.target)
+        target instanceof Node &&
+        !hamburger.contains(target) &&
+        !navLinks.contains(target)
       ) {
         closeNavigation();
       }
     });
 
-    // Close the mobile menu when returning to desktop width.
+    // Close the menu with Escape.
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeNavigation();
+        hamburger.focus();
+      }
+    });
+
+    // Reset navigation state when returning to desktop width.
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) closeNavigation();
+      if (window.innerWidth > 900) {
+        closeNavigation();
+      }
     });
   }
 
-  // Automatically update the copyright year.
-  if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
+  // ------------------------------------------------------
+  // ACTIVE NAVIGATION LINK
+  // ------------------------------------------------------
+
+  const sections = document.querySelectorAll(
+    "#home, #about, #projects, #skills, #contact"
+  );
+
+  const navigationLinks = document.querySelectorAll(
+    ".nav-links .nav-link"
+  );
+
+  function setActiveLink(sectionId) {
+    navigationLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      const isActive = href === `#${sectionId}`;
+
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
   }
 
-  // Highlight the navigation item for the visible section.
-  const observedSections = ["home", "impact", "about", "projects", "skills", "contact"]
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
+  if ("IntersectionObserver" in window && sections.length > 0) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
 
-  if ("IntersectionObserver" in window && observedSections.length) {
-    const observer = new IntersectionObserver(
-      entries => {
-        const visible = entries
-          .filter(entry => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (!visible) return;
-
-        const activeId = visible.target.id;
-
-        navItems.forEach(link => {
-          const active = link.getAttribute("href") === `#${activeId}`;
-          link.classList.toggle("active", active);
-        });
+        if (visibleEntries.length > 0) {
+          setActiveLink(visibleEntries[0].target.id);
+        }
       },
       {
-        rootMargin: "-22% 0px -58% 0px",
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
         threshold: [0, 0.15, 0.35, 0.6]
       }
     );
 
-    observedSections.forEach(section => observer.observe(section));
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
   }
-})();
+
+  // ------------------------------------------------------
+  // AUTOMATIC COPYRIGHT YEAR
+  // ------------------------------------------------------
+
+  const yearElement = document.getElementById("current-year");
+
+  if (yearElement) {
+    yearElement.textContent = String(new Date().getFullYear());
+  }
+
+  // ------------------------------------------------------
+  // SMOOTH SCROLL FOR INTERNAL LINKS
+  // ------------------------------------------------------
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+
+      if (!href || href === "#") return;
+
+      let target;
+
+      try {
+        target = document.querySelector(href);
+      } catch (error) {
+        return;
+      }
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+          ? "auto"
+          : "smooth",
+        block: "start"
+      });
+
+      // Keep the URL hash in sync without a second jump.
+      if (window.location.hash !== href) {
+        history.pushState(null, "", href);
+      }
+    });
+  });
+
+  // ------------------------------------------------------
+  // EXTERNAL LINKS: OPEN SAFELY IN A NEW TAB
+  // ------------------------------------------------------
+
+  document
+    .querySelectorAll('a[target="_blank"]')
+    .forEach((link) => {
+      const relValues = new Set(
+        (link.getAttribute("rel") || "")
+          .split(/\s+/)
+          .filter(Boolean)
+      );
+
+      relValues.add("noopener");
+      relValues.add("noreferrer");
+
+      link.setAttribute("rel", [...relValues].join(" "));
+    });
+
+  // ------------------------------------------------------
+  // OPTIONAL DOWNLOADABLE CV BUTTON
+  // ------------------------------------------------------
+  // If your HTML includes an element with id="download-cv",
+  // this handler checks for a valid href before navigation.
+  // Set the anchor's href to your actual CV file path.
+  // Example: href="assets/Qoseem-Oyerinmade-CV.pdf"
+
+  const cvButton = document.getElementById("download-cv");
+
+  if (cvButton) {
+    cvButton.addEventListener("click", (event) => {
+      const cvHref = cvButton.getAttribute("href");
+
+      if (!cvHref || cvHref === "#") {
+        event.preventDefault();
+        console.warn(
+          "CV download is not configured. Add the correct CV file path to the download-cv link."
+        );
+      }
+    });
+  }
+});
