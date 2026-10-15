@@ -34,6 +34,7 @@
         <a class="nav-link active" href="#home">Home</a>
         <a class="nav-link" href="#about">About</a>
         <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#impact">Impact</a>
         <a class="nav-link" href="#skills">Skills</a>
         <a class="nav-link" href="#contact">Contact</a>
       </div>
@@ -74,8 +75,14 @@
         <h1 id="hero-title">Qoseem<br><span>Oyerinmade</span></h1>
 
         <p class="hero-role">
-          DevSecOps Engineer <span>·</span> Cloud Infrastructure
-          <span>·</span> Automation <span>·</span> Kubernetes
+          DevSecOps / Cloud Infrastructure Engineer <span>·</span> AWS
+          <span>·</span> Kubernetes <span>·</span> Terraform
+        </p>
+
+        <p class="hero-current-role">
+          <span class="role-marker" aria-hidden="true"></span>
+          <strong>Smatsystems IT Consulting Ltd</strong>
+          <span class="role-separator">/</span> Current Role
         </p>
 
         <p class="hero-description">
@@ -94,6 +101,11 @@
             href="https://www.linkedin.com/in/qoseemoluwafemi"
             target="_blank" rel="noopener noreferrer">
             ▣ &nbsp; View LinkedIn
+          </a>
+
+          <a class="button button-cv"
+            href="assets/Qoseem-Oyerinmade-CV.pdf" download>
+            <span aria-hidden="true">↓</span> Download CV
           </a>
         </div>
 
@@ -172,10 +184,51 @@
       </div>
     </section>
 
+    <section class="impact-section container-wide" id="impact" aria-labelledby="impact-title">
+      <div class="impact-heading">
+        <div>
+          <p class="section-kicker">ENGINEERING OUTCOMES</p>
+          <h2 id="impact-title">Impact Highlights</h2>
+        </div>
+        <p>Security, delivery speed, and resilient infrastructure — the outcomes behind the tools.</p>
+      </div>
+
+      <div class="impact-grid">
+        <article class="impact-card impact-metric">
+          <span class="impact-label">DELIVERY AUTOMATION</span>
+          <strong class="impact-value">97%</strong>
+          <h3>Deployment reduction with Nx</h3>
+          <p>Streamlined fintech monorepo workflows using Nx and GitHub Actions.</p>
+          <a href="https://github.com/Coreinfra-Labs/fintech-platform" target="_blank" rel="noopener noreferrer">Explore CI/CD project <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="impact-card impact-metric">
+          <span class="impact-label">PLATFORM OPERATIONS</span>
+          <strong class="impact-value">4×</strong>
+          <h3>Reduction in EKS support costs</h3>
+          <p>Production-focused Kubernetes platform engineering and upgrade strategy.</p>
+          <a href="https://github.com/qzee-dev/eks-production-platform" target="_blank" rel="noopener noreferrer">Explore EKS platform <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="impact-card">
+          <span class="impact-icon" aria-hidden="true">⬡</span>
+          <h3>Governed AWS foundations</h3>
+          <p>Landing Zone and hybrid connectivity concepts built around segmented environments, centralized routing, and inspected traffic paths.</p>
+        </article>
+
+        <article class="impact-card">
+          <span class="impact-icon" aria-hidden="true">⛨</span>
+          <h3>Security integrated into delivery</h3>
+          <p>Automated scanning, policy-as-code checks, secret detection, and controlled release workflows.</p>
+        </article>
+      </div>
+      <p class="impact-note">Metrics are presented as supplied project outcomes; supporting implementation details are available in the linked repositories.</p>
+    </section>
+
     <section class="about-panel container-wide" id="about" aria-labelledby="about-title">
       <div class="profile-column">
         <div class="profile-ring">
-          <img src="images/kubernetes.png" alt="Kubernetes profile illustration"
+          <img src="images/kubernetes.svg" alt="Kubernetes profile illustration"
             loading="lazy" decoding="async">
         </div>
         <span class="profile-status">
@@ -252,12 +305,12 @@
             <span class="project-number">01 / PLATFORM ENGINEERING</span>
             <span class="project-glyph">✣</span>
           </div>
-          <h3>Production EKS / GitOps Platform</h3>
+          <h3>Production EKS Platform with Governed GitOps Delivery</h3>
           <div class="tech-stack">
             <span>AWS EKS</span><span>Terraform</span><span>ArgoCD</span>
             <span>Helm</span><span>GitOps</span>
           </div>
-          <img src="images/Eks-production01.png"
+          <img src="images/Eks-production01.svg"
             alt="Production EKS GitOps architecture" class="arch-image"
             loading="lazy" decoding="async">
           <p>
@@ -270,6 +323,7 @@
             <li>Checkov policy-as-code governance</li>
             <li>Encrypted Terraform remote state</li>
             <li>Production-safe EKS upgrade strategy</li>
+            <li><strong class="outcome-highlight">4× reduction in EKS support costs</strong> (reported project outcome)</li>
           </ul>
           <div class="project-links">
             <a class="project-link"
@@ -294,12 +348,12 @@
             <span class="project-number">02 / SECURE DELIVERY</span>
             <span class="project-glyph">⛨</span>
           </div>
-          <h3>End-to-End CI/CD Platform for Fintech</h3>
+          <h3>Faster Fintech CI/CD with Nx and Security Gates</h3>
           <div class="tech-stack">
             <span>GitHub Actions</span><span>Nx</span><span>Docker</span>
             <span>Trivy</span><span>Gitleaks</span>
           </div>
-          <img src="images/DevSecOps-cicd.png"
+          <img src="images/DevSecOps-cicd.svg"
             alt="Fintech DevSecOps CI/CD architecture" class="arch-image"
             loading="lazy" decoding="async">
           <p>
@@ -308,6 +362,7 @@
             and release delivery with governance and notifications.
           </p>
           <ul class="project-highlights">
+            <li><strong class="outcome-highlight">97% deployment reduction with Nx</strong> (reported project outcome)</li>
             <li>Monorepo CI/CD with Nx and GitHub Actions</li>
             <li>Trivy and Gitleaks security scanning</li>
             <li>Immutable release tags and digest verification</li>
@@ -328,7 +383,7 @@
             <span class="project-number">03 / INFRASTRUCTURE AUTOMATION</span>
             <span class="project-glyph">⬡</span>
           </div>
-          <h3>Infrastructure Automation with Terraform, Packer &amp; Ansible</h3>
+          <h3>Repeatable AWS Infrastructure with Immutable AMIs</h3>
           <div class="tech-stack">
             <span>AWS</span><span>Terraform</span><span>Packer</span>
             <span>Ansible</span><span>Docker</span><span>CloudWatch</span>
@@ -346,7 +401,7 @@
             <div class="network-footer"><span>Provision</span><span>•</span><span>Build immutable AMIs</span><span>•</span><span>Configure &amp; monitor</span></div>
           </div>
           <p>
-            An infrastructure-as-code platform that automates provisioning
+            An infrastructure-as-code platform for repeatable provisioning
             and deployment of a secure, scalable three-tier AWS environment.
             Terraform defines the cloud foundation, Packer builds immutable
             AMIs, and Ansible configures the application runtime and monitoring.
@@ -425,6 +480,9 @@
         <a class="button button-outline" href="https://github.com/qzee-dev"
           target="_blank" rel="noopener noreferrer">
           Explore GitHub <span>↗</span>
+        </a>
+        <a class="button button-cv" href="assets/Qoseem-Oyerinmade-CV.pdf" download>
+          Download CV <span aria-hidden="true">↓</span>
         </a>
       </div>
     </section>
