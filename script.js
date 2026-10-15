@@ -3,6 +3,7 @@
 // QOSEEM OYERINMADE — PORTFOLIO INTERACTIONS
 // Theme, responsive navigation, active section, footer year
 // =====================================================
+
 (() => {
   "use strict";
 
@@ -30,9 +31,7 @@
       themeToggle.setAttribute("aria-pressed", String(!isDark));
     }
 
-    const themeMeta = document.querySelector(
-      'meta[name="theme-color"]'
-    );
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
 
     if (themeMeta) {
       themeMeta.setAttribute(
@@ -76,7 +75,6 @@
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       const currentTheme = root.getAttribute("data-theme");
-
       setTheme(currentTheme === "dark" ? "light" : "dark");
     });
   }
@@ -97,12 +95,10 @@
       const isOpen = navLinks.classList.toggle("active");
 
       hamburger.setAttribute("aria-expanded", String(isOpen));
-
       hamburger.setAttribute(
         "aria-label",
         isOpen ? "Close navigation" : "Open navigation"
       );
-
       hamburger.classList.toggle("is-open", isOpen);
     });
 
@@ -113,10 +109,7 @@
 
     // Close the menu when Escape is pressed.
     document.addEventListener("keydown", event => {
-      if (
-        event.key === "Escape" &&
-        navLinks.classList.contains("active")
-      ) {
+      if (event.key === "Escape" && navLinks.classList.contains("active")) {
         closeNavigation();
         hamburger.focus();
       }
@@ -135,9 +128,7 @@
 
     // Close the mobile menu when returning to desktop width.
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) {
-        closeNavigation();
-      }
+      if (window.innerWidth > 900) closeNavigation();
     });
   }
 
@@ -147,37 +138,23 @@
   }
 
   // Highlight the navigation item for the visible section.
-  const observedSections = [
-    "home",
-    "about",
-    "projects",
-    "skills",
-    "contact"
-  ]
+  const observedSections = ["home", "about", "projects", "skills", "contact"]
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
-  if (
-    "IntersectionObserver" in window &&
-    observedSections.length
-  ) {
+  if ("IntersectionObserver" in window && observedSections.length) {
     const observer = new IntersectionObserver(
       entries => {
         const visible = entries
           .filter(entry => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          )[0];
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
         if (!visible) return;
 
         const activeId = visible.target.id;
 
         navItems.forEach(link => {
-          const active =
-            link.getAttribute("href") === `#${activeId}`;
-
+          const active = link.getAttribute("href") === `#${activeId}`;
           link.classList.toggle("active", active);
         });
       },
@@ -187,8 +164,6 @@
       }
     );
 
-    observedSections.forEach(section => {
-      observer.observe(section);
-    });
+    observedSections.forEach(section => observer.observe(section));
   }
 })();
