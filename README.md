@@ -1,13 +1,13 @@
-# portfolio
-portfolio/
+qoseem-portfolio/
 ├── index.html
 ├── styles.css
-└── images/
-    ├── profile.jpg
-    ├── microservices-architecture.png
-    ├── cicd-architecture.png
-    └── terraform-architecture.png
-
+├── script.js
+├── images/
+│   ├── kubernetes.svg
+│   ├── Eks-production01.svg
+│   └── DevSecOps-cicd.svg
+└── assets/
+    └── Qoseem-Oyerinmade-CV.pdf
 
 # Qoseem Oyerinmade Portfolio
 
